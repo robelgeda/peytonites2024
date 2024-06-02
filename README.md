@@ -11,8 +11,9 @@ Welcome to the official GitHub repository for Team Peytonites! We are a passiona
 
 ## Navigating
 
-Please refer to the documentation in the link below for more information. This repository contains the "peytonites" Python package, which is designed to assist in generating initial conditions, writing and reading from files, and providing some visualization tools. The purpose of this is to allow us to concentrate on the n-body aspect of the project.
+### [Peytonites Documentation](https://peytonites2024.readthedocs.io/en/latest/index.html)
+
+Please refer to the documentation in the link above for more information. This repository contains the "peytonites" Python package, which is designed to assist in generating initial conditions, writing and reading from files, and providing some visualization tools. The purpose of this is to allow us to concentrate on the n-body aspect of the project.
 
 The "hackathon" folder contains a serialized version of the n-body code that we hope to convert to GPU code. Please make sure to work in that directory. Also, remember not to push your simulations to GitHub. To help avoid mistakes, always include 'simout' somewhere in the output directory name
 
-### [Peytonites Documentation](https://peytonites2024.readthedocs.io/en/latest/index.html)
