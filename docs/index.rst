@@ -10,7 +10,7 @@ Table of Contents
 *****************
 
 .. toctree::
-  :caption: User Documentation
+  :caption: Team Documentation
   :maxdepth: 3
 
   install
