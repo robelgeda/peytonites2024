@@ -23,3 +23,5 @@ sphinx_astropy
 sphinx_rtd_theme
 sphinx-automodapi
 extension_helpers
+sphinx-copybutton
+sphinx-book-theme
