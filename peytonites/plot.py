@@ -57,10 +57,10 @@ def simulation_to_gif_3d(simulation_dir, gif_filename='simulation_3d.gif',
         axs.set_ylim(-max_range, max_range)
         axs.set_zlim(-max_range, max_range)
 
-        w_axis_value = 1.0
-        axs.w_xaxis.set_pane_color((w_axis_value, w_axis_value, w_axis_value, 1.0))
-        axs.w_yaxis.set_pane_color((w_axis_value, w_axis_value, w_axis_value, 1.0))
-        axs.w_zaxis.set_pane_color((w_axis_value, w_axis_value, w_axis_value, 1.0))
+        # w_axis_value = 1.0
+        # axs.w_xaxis.set_pane_color((w_axis_value, w_axis_value, w_axis_value, 1.0))
+        # axs.w_yaxis.set_pane_color((w_axis_value, w_axis_value, w_axis_value, 1.0))
+        # axs.w_zaxis.set_pane_color((w_axis_value, w_axis_value, w_axis_value, 1.0))
         
         f = fb[i]
         dist = SimState.read(f).distribution

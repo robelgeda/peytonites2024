@@ -12,18 +12,17 @@ copyright = '{0}, {1}'.format(datetime.datetime.now().year, "peytonites")
 package = "peytonites"
 
 # -- General configuration ---------------------------------------------------
-
 extensions = [
     "nbsphinx",
     "sphinx.ext.mathjax",
     "nbsphinx",
     "sphinx_copybutton",
 ]
+nbsphinx_execute = 'auto'
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "**.ipynb_checkpoints"]
 html_sourcelink_suffix = ""  # Avoid .ipynb.txt extensions in sources
 master_doc = "index"
-
 html_theme = "sphinx_book_theme"
 html_theme_options = {
     "repository_url": "https://github.com/robelgeda/peytonites2024.git",
@@ -35,15 +34,6 @@ html_theme_options = {
 }
 html_logo = "./logo.svg"
 html_favicon = "./logo.svg"
-
 html_title = '{0}'.format(project)
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
-
 nbsphinx_timeout = 300
-
-
 suppress_warnings = []
