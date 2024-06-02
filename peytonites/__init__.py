@@ -6,4 +6,9 @@
 from ._astropy_init import *   # noqa
 # ----------------------------------------------------------------------------
 
-__all__ = []
+# __all__ = []
+
+from .core import *
+from .dist import *
+from .utils import *
+from .plot import *

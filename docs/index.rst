@@ -1,14 +1,14 @@
 Documentation
 =============
 
-This is the documentation for pbody.
+This is the documentation for peytonites.
 
 .. toctree::
   :maxdepth: 2
 
-  pbody/index.rst
+  peytonites/index.rst
 
 .. note:: The layout of this directory is simply a suggestion.  To follow
           traditional practice, do *not* edit this page, but instead place
-          all documentation for the package inside ``pbody/``.
+          all documentation for the package inside ``peytonites/``.
           You can follow this practice or choose your own layout.

@@ -1,10 +1,10 @@
 *******************
-pbody Documentation
+peytonites Documentation
 *******************
 
-This is the documentation for pbody.
+This is the documentation for peytonites.
 
 Reference/API
 =============
 
-.. automodapi:: pbody
+.. automodapi:: peytonites
