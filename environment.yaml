@@ -1,0 +1,15 @@
+name: peytonites
+
+channels:
+  - conda-forge
+  - astropy
+  - http://ssb.stsci.edu/astroconda
+  - defaults
+
+dependencies:
+  # Base dependencies
+  - pip
+  - python==3.11.8
+  - Pandoc
+  - pip:
+    - -r requirements.txt
