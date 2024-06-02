@@ -1,0 +1,25 @@
+# Core Dependencies
+Cython
+numpy>=1.13
+scipy
+matplotlib>=3.1.1
+astropy>=5.2
+jupyter
+notebook
+ipywidgets
+
+# Docs
+sphinx
+docutils
+nbsphinx
+nbconvert
+
+# Tests
+tox
+pytest-astropy-header
+
+# Other
+sphinx_astropy
+sphinx_rtd_theme
+sphinx-automodapi
+extension_helpers
