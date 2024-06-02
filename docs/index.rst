@@ -8,7 +8,8 @@ Table of Contents
 
 .. toctree::
   :caption: Team Documentation
-  :maxdepth: 3
+  :maxdepth: 2
 
   install
   simulation
+  serial_nbody
