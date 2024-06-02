@@ -21,7 +21,7 @@ G = 6.67e-08 # cm^3 / (g s^2)
 class SimState:
     def __init__(self, distribution, nsteps, dt, soft, out_interval):
         self.distribution = distribution
-        self.nsteps = nsteps
+        self.nsteps = int(nsteps)
         self.dt = dt
         self.soft = soft
         self.out_interval = out_interval
@@ -42,6 +42,8 @@ class SimState:
         with open(filename, "r") as f:
             line = f.readline().replace('\n', '').split(' ')
             N, nsteps, dt, soft, out_interval, G_in = [float(i) for i in line]
+            nsteps = int(nsteps)
+            out_interval = int(out_interval)
             points = []
             for line in f:
                 points.append(line.split(' '))
