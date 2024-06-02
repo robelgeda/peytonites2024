@@ -49,7 +49,7 @@ release = package.__version__
 
 # -- Options for HTML output --------------------------------------------------
 
-html_theme = "sphinx_rtd_theme"
+html_theme = "sphinx_book_theme"
 
 
 # Custom sidebar templates, maps document names to template names.
