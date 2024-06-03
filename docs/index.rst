@@ -8,6 +8,8 @@ This is the documentation for the "peytonites" Python package, which is designed
     :width: 100%
     :align: center
 
+The team and package, "peytonites", are named after Peyton Hall, home to the Princeton Astrophysical Sciences Department.
+
 |
 
 Table of Contents

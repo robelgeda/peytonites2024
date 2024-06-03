@@ -20,6 +20,13 @@ G = 6.67e-08 # cm^3 / (g s^2)
 
 class SimState:
     def __init__(self, distribution, nsteps, dt, soft, out_interval):
+        """
+        - `distribution`: Particle distributions stored in a `Distribution` object (see next main bullet)
+        - `nsteps`: Number of timesteps to run the simulation
+        - `dt`: How many seconds a single time-step is. 
+        - `soft`: Softening parameter.
+        - `out_interval`: Output and save to file every `out_interval` (output is saved `SimState.write(filename)`.
+        """
         self.distribution = distribution
         self.nsteps = int(nsteps)
         self.dt = dt
