@@ -75,11 +75,13 @@ def simulation(sim_init_cond, out_dir, verbose=True):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print("Usage: python your_script.py <path_to_initial_conditions> <path_to_output_dir>")
+        print("Usage: python main.py <path_to_initial_conditions> <path_to_output_dir>")
         sys.exit(1)
     
     init_cond_path = sys.argv[1]
     out_dir = sys.argv[2]
+
+    assert 'simout' in out_dir, "'simout' needs to be a part of the output dir name."
 
     tstart = time()
     simulation(init_cond_path, out_dir, verbose=False)
