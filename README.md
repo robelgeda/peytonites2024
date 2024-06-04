@@ -43,3 +43,9 @@ ml save
 That last line is optional, but keeps you from having to set it up later. Now you can use `hatch run cuda12:python` to start up a Python with everything present, including cupy!
 
 If you want to build and serve the docs (locally, for example, not on the cluster), you can use `hatch run docs:serve`.
+
+For Jupyter lab (such as locally), use:
+
+```bash
+hatch run jupyter:lab
+```
