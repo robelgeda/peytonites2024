@@ -28,16 +28,20 @@ Get Hatch, then Python:
 ```bash
 wget https://github.com/pypa/hatch/releases/latest/download/hatch-x86_64-unknown-linux-gnu.tar.gz
 tar -xzf hatch-x86_64-unknown-linux-gnu.tar.gz -C ~/.local/bin
-hatch python install 3.12
+HATCH_PYTHON_VARIANT_LINUX=v2 hatch python install 3.12
 ```
+
+> [!WARNING]
+> Stellar is a heterogeneous cluster. If you don't specify
+> `HATCH_PYTHON_VARIANT_LINUX=v2`, hatch will download the most optimized
+> Python for the head node, which won't work on the workers.
 
 Log out or re-source your config, however you want to get Python on the path.
 
 Make sure CUDA is available:
 
 ```bash
-ml load cudatoolkit/12.4
-ml save
+ml cudatoolkit/12.4
 ```
 
 That last line is optional, but keeps you from having to set it up later. Now you can use `hatch run cuda12:python` to start up a Python with everything present, including cupy!
@@ -49,3 +53,21 @@ For Jupyter lab (such as locally), use:
 ```bash
 hatch run jupyter:lab
 ```
+
+## Submitting jobs
+
+Make sure the environment is updated on the head node first:
+
+```
+hatch env create cuda12
+```
+
+(Or any `hatch run cuda12:...` command does this.)
+
+To submit:
+
+```bash
+sbatch submit.sbatch
+```
+
+from the hackathon folder.
