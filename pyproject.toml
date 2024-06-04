@@ -51,6 +51,13 @@ extra-dependencies = [
   "cupy-cuda12x",
 ]
 
+[tool.hatch.envs.jupyter]
+extra-dependencies = [
+  "jupyterlab",
+  "matplotlib",
+]
+scripts.lab = "jupyter lab {args}"
+
 [tool.hatch.envs.hatch-test]
 features = [ "test" ]
 
