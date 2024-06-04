@@ -19,6 +19,5 @@ Table of Contents
   :caption: Team Documentation
   :maxdepth: 2
 
-  install
   simulation
   serial_nbody
