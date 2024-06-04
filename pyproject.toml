@@ -17,6 +17,7 @@ classifiers = [
 dynamic = [ "version" ]
 dependencies = [
   "astropy",
+  "matplotlib",
 ]
 optional-dependencies.docs = [
   "sphinx",
@@ -54,7 +55,6 @@ extra-dependencies = [
 [tool.hatch.envs.jupyter]
 extra-dependencies = [
   "jupyterlab",
-  "matplotlib",
 ]
 scripts.lab = "jupyter lab {args}"
 
