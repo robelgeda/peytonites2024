@@ -21,12 +21,19 @@ The "hackathon" folder contains a serialized version of the n-body code that we 
 
 To set up on the cluster:
 
-Optional: if you like the gh tool, `wget https://github.com/cli/cli/releases/download/v2.50.0/gh_2.50.0_linux_amd64.tar.gz` and extract it to `~/.local`.
+Optional: if you like the gh tool, you can install it like this:
+
+```bash
+wget https://github.com/cli/cli/releases/download/v2.50.0/gh_2.50.0_linux_amd64.tar.gz
+mkdir ~/.local
+tar -xzf gh_2.50.0_linux_amd64.tar.gz --strip-components=1 -C ~/.local
+```
 
 Get Hatch, then Python:
 
 ```bash
 wget https://github.com/pypa/hatch/releases/latest/download/hatch-x86_64-unknown-linux-gnu.tar.gz
+mkdir -p ~/.local/bin
 tar -xzf hatch-x86_64-unknown-linux-gnu.tar.gz -C ~/.local/bin
 HATCH_PYTHON_VARIANT_LINUX=v2 hatch python install 3.12
 ```
@@ -56,13 +63,19 @@ hatch run jupyter:lab
 
 ## Submitting jobs
 
+The job submission material is in the `/hackathon` subfolder. Ensure you are in that dir:
+
+```bash
+cd hackathon
+```
+
 Make sure the environment is updated on the head node first:
 
-```
+```bash
 hatch env create cuda12
 ```
 
-(Or any `hatch run cuda12:...` command does this.)
+(Or any `hatch run cuda12:...` command does this, like `hatch run cuda12:echo Synced`)
 
 To submit:
 
