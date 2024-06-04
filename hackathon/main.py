@@ -1,7 +1,6 @@
 import os
-from os import path
 import sys
-from time import time
+import time
 
 import numpy as np
 
@@ -63,7 +62,7 @@ def simulation(sim_init_cond, out_dir, verbose=True):
                 step_params.distribution = step_dist
 
             step_filename = 'step_{:08d}.dat'.format(step)
-            step_path = path.join(out_dir, step_filename)
+            step_path = os.path.join(out_dir, step_filename)
             if not os.path.isdir(out_dir):
                 os.makedirs(out_dir)
             step_params.write(step_path)
@@ -83,10 +82,12 @@ if __name__ == '__main__':
 
     assert 'simout' in out_dir, "'simout' needs to be a part of the output dir name."
 
-    tstart = time()
-    simulation(init_cond_path, out_dir, verbose=False)
-    tend = time()
-    print('Done!')
+    sim_init_cond = SimState.read(init_cond_path)
+
+    tstart = time.monotonic()
+    simulation(sim_init_cond, out_dir, verbose=False)
+    tend = time.monotonic()
+    print(f'Done with {init_cond_path}!')
 
     run_time = (tend-tstart)*u.s
     if run_time > 3600*u.s:
