@@ -5,7 +5,10 @@ import numpy as np
 from .core import Distribution, G
 
 __all__ = [
-    'solar_system', 'disk', 'collapse_shpere', 'plummer',
+    'collapse_shpere',
+    'disk',
+    'plummer',
+    'solar_system',
 ]
 
 def solar_system():
@@ -54,7 +57,7 @@ def disk(
     mass = disk_mass / N
     dens = N / (radius * radius)
     r_list = []
-    for i in range(N):
+    for _ in range(N):
         r = rn.uniform(0.0, radius) + 4e3
         thet = rn.uniform(0.0000001, 2.0 * np.pi) #+ phi0
 
@@ -90,7 +93,7 @@ def collapse_shpere(N, radius,
                     vx=0., vy=0., vz=0.):
     points = []
 
-    for i in range(N):
+    for _ in range(N):
         r = rn.uniform(0.0, radius)
         phi = rn.uniform(0.0000001, 2.0 * np.pi)
         costheta = rn.uniform(-1,1)
@@ -136,7 +139,7 @@ def plummer(N, radius,
     M = total_mass
     mass = M/N
 
-    for i in range(N):
+    for _ in range(N):
         r = None
         while r is None or r > max_radius:
             uni_draw = np.random.uniform(0, 1)

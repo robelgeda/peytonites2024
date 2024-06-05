@@ -9,8 +9,10 @@ plt.rcParams['image.origin'] = 'lower'
 plt.rcParams['font.size'] = 12
 
 __all__ = [
-    'SimState', 'Distribution',
-    'dynamical_time', 'estimate_softening_length'
+    'Distribution',
+    'SimState',
+    'dynamical_time',
+    'estimate_softening_length'
 ]
 
 
@@ -103,15 +105,15 @@ class Distribution:
         if self.name and other.name:
             name = self.name + '+' + other.name
         else:
-            name = self.name if self.name else other.name
+            name = self.name or other.name
 
         return Distribution(self._points +  other._points, name)
 
 
     def _write_lines(self, f):
         for line in self.points:
-                line = " ".join([str(j) for j in line])
-                f.write(line+"\n")
+            line_s = " ".join([str(j) for j in line])
+            f.write(f"{line_s}\n")
 
     def _write_init_file(self, filename, nsteps, dt, soft, out_interval, G_out):
         with open(filename, "w") as f:
@@ -125,9 +127,7 @@ class Distribution:
     @staticmethod
     def read(filename):
         with open(filename) as f:
-            points = []
-            for line in f:
-                points.append(line.split(' '))
+            points = [line.split(' ') for line in f]
         basename = path.splitext(filename)[0]
         return Distribution(points, name=basename)
 
@@ -182,6 +182,4 @@ def estimate_softening_length(N, radius, fraction=0.1):
 
     mean_interparticle_distance = (1 / number_density) ** (1/3)
 
-    softening_length = fraction * mean_interparticle_distance
-
-    return softening_length
+    return fraction * mean_interparticle_distance

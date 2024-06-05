@@ -4,7 +4,7 @@ import datetime
 
 project = "peytonites"
 author = "peytonites"
-copyright = '{0}, {1}'.format(datetime.datetime.now().year, "peytonites")
+copyright = '{}, {}'.format(datetime.datetime.now().year, "peytonites")
 package = "peytonites"
 
 # -- General configuration ---------------------------------------------------
