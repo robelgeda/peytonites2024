@@ -1,8 +1,4 @@
-import os
-import sys
 import datetime
-from importlib import import_module
-
 
 # -- Project information -----------------------------------------------------
 
@@ -31,10 +27,10 @@ html_theme_options = {
     "use_issues_button": True,
     "use_edit_page_button": True,
     "show_toc_level": 3,
-    'default_mode': 'dark',  
+    'default_mode': 'dark',
 }
 html_logo = "./logo.svg"
 html_favicon = "./logo.svg"
-html_title = '{0}'.format(project)
+html_title = f'{project}'
 nbsphinx_timeout = 300
 suppress_warnings = []
