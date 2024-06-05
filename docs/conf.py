@@ -11,7 +11,6 @@ package = "peytonites"
 extensions = [
     "nbsphinx",
     "sphinx.ext.mathjax",
-    "nbsphinx",
     "sphinx_copybutton",
 ]
 nbsphinx_execute = 'auto'
