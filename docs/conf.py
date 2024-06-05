@@ -31,6 +31,6 @@ html_theme_options = {
 }
 html_logo = "./logo.svg"
 html_favicon = "./logo.svg"
-html_title = f'{project}'
+html_title = project
 nbsphinx_timeout = 300
 suppress_warnings = []
