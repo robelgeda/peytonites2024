@@ -1,17 +1,18 @@
-from os import path 
-
-import numpy as np
-
-from astropy import units as u
+from os import path
 
 import matplotlib.pyplot as plt
+import numpy as np
+from astropy import units as u
+
 plt.rcParams['figure.figsize'] = [6, 6]
 plt.rcParams['image.origin'] = 'lower'
 plt.rcParams['font.size'] = 12
 
 __all__ = [
-    'SimState', 'Distribution',
-    'dynamical_time', 'estimate_softening_length'
+    'Distribution',
+    'SimState',
+    'dynamical_time',
+    'estimate_softening_length'
 ]
 
 
@@ -46,9 +47,9 @@ class SimState:
 
     @staticmethod
     def read(filename):
-        with open(filename, "r") as f:
+        with open(filename) as f:
             line = f.readline().replace('\n', '').split(' ')
-            N, nsteps, dt, soft, out_interval, G_in = [float(i) for i in line]
+            N, nsteps, dt, soft, out_interval, G_in = (float(i) for i in line)
             nsteps = int(nsteps)
             out_interval = int(out_interval)
             points = []
@@ -59,10 +60,10 @@ class SimState:
         sim_init_cond = SimState(dist, nsteps, dt, soft, out_interval)
         sim_init_cond.G = G_in
         return sim_init_cond
-    
+
     def copy(self):
         return SimState(
-            self.distribution, self.nsteps, self.dt, 
+            self.distribution, self.nsteps, self.dt,
             self.soft, self.out_interval)
 
 
@@ -85,7 +86,7 @@ class Distribution:
         self.name = name
 
         self._points = points
-        self.points = np.array(self._points, float) 
+        self.points = np.array(self._points, float)
         self.points_T = self.points.T
         self.N = len(self.points)
 
@@ -93,26 +94,26 @@ class Distribution:
 
 
     def __str__(self):
-        return 'Points: {}, Distribution: {}'.format(len(self.points), self.name)
+        return f'Points: {len(self.points)}, Distribution: {self.name}'
 
 
     def __add__(self, other):
         '''Combine two Distribution points'''
         if not isinstance(other, Distribution):
             raise TypeError('You can only sum Distribution to another Distribution')
-        
+
         if self.name and other.name:
-            name = self.name + '+' + other.name 
+            name = self.name + '+' + other.name
         else:
-            name = self.name if self.name else other.name
+            name = self.name or other.name
 
         return Distribution(self._points +  other._points, name)
-    
-    
+
+
     def _write_lines(self, f):
         for line in self.points:
-                line = " ".join([str(j) for j in line])
-                f.write(line+"\n")
+            line_s = " ".join([str(j) for j in line])
+            f.write(f"{line_s}\n")
 
     def _write_init_file(self, filename, nsteps, dt, soft, out_interval, G_out):
         with open(filename, "w") as f:
@@ -125,10 +126,8 @@ class Distribution:
 
     @staticmethod
     def read(filename):
-        with open(filename, "r") as f:
-            points = []
-            for line in f:
-                points.append(line.split(' '))
+        with open(filename) as f:
+            points = [line.split(' ') for line in f]
         basename = path.splitext(filename)[0]
         return Distribution(points, name=basename)
 
@@ -146,7 +145,7 @@ class Distribution:
         coordinates = [(x, y), (x, z), (y, z)]
         labels = [('X', 'Y'), ('X', 'Z'), ('Y', 'Z')]
 
-        for ax, (data_x, data_y), (label_x, label_y) in zip(axs, coordinates, labels):
+        for ax, (data_x, data_y), (label_x, label_y) in zip(axs, coordinates, labels, strict=False):
             plt.sca(ax)
             plt.scatter(data_x, data_y)
             plt.xlabel(f'{label_x} [{unit}]')
@@ -158,12 +157,12 @@ class Distribution:
 
     @staticmethod
     def from_arrays(
-        x_arr, y_arr, z_arr, 
+        x_arr, y_arr, z_arr,
         vx_arr, vy_arr, vz_arr,
         mass_arr, name=''):
 
         points = np.array([
-            x_arr, y_arr, z_arr, 
+            x_arr, y_arr, z_arr,
             vx_arr, vy_arr, vz_arr,
             mass_arr
         ]).T
@@ -183,6 +182,4 @@ def estimate_softening_length(N, radius, fraction=0.1):
 
     mean_interparticle_distance = (1 / number_density) ** (1/3)
 
-    softening_length = fraction * mean_interparticle_distance
-
-    return softening_length
+    return fraction * mean_interparticle_distance

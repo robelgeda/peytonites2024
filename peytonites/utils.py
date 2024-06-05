@@ -1,5 +1,6 @@
 from astropy import units as u
 
+
 def kpc_to_cm(value):
     return (value * u.kpc).to(u.cm).value
 

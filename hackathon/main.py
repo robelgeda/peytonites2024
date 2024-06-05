@@ -61,7 +61,7 @@ def simulation(sim_init_cond, out_dir, verbose=True):
                 step_params = sim_init_cond.copy()
                 step_params.distribution = step_dist
 
-            step_filename = 'step_{:08d}.dat'.format(step)
+            step_filename = f'step_{step:08d}.dat'
             step_path = os.path.join(out_dir, step_filename)
             if not os.path.isdir(out_dir):
                 os.makedirs(out_dir)
@@ -69,14 +69,13 @@ def simulation(sim_init_cond, out_dir, verbose=True):
 
     if verbose:
         print(step)
-    return
 
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("Usage: python main.py <path_to_initial_conditions> <path_to_output_dir>")
         sys.exit(1)
-    
+
     init_cond_path = sys.argv[1]
     out_dir = sys.argv[2]
 

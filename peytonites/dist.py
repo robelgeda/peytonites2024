@@ -1,21 +1,24 @@
+import random as rn
+
 import numpy as np
-import random as rn 
 
 from .core import Distribution, G
 
-
 __all__ = [
-    'solar_system', 'disk', 'collapse_shpere', 'plummer', 
+    'collapse_shpere',
+    'disk',
+    'plummer',
+    'solar_system',
 ]
 
 def solar_system():
     M_sun = 1.988e+33 # in grams
-    masses = np.array([M_sun, 3.300e+26, 4.870e+27, 
-                       5.970e+27, 6.420e+26, 1.898e+30, 
+    masses = np.array([M_sun, 3.300e+26, 4.870e+27,
+                       5.970e+27, 6.420e+26, 1.898e+30,
                        5.680e+29, 8.680e+28, 1.020e+29]) # in grams
 
-    r_dist = np.array([0., 5.790e+12, 1.082e+13, 
-                       1.496e+13, 2.279e+13, 7.785e+13, 
+    r_dist = np.array([0., 5.790e+12, 1.082e+13,
+                       1.496e+13, 2.279e+13, 7.785e+13,
                        1.434e+14, 2.871e+14, 4.495e+14]) # in cm
 
     x_arr = r_dist.copy()
@@ -28,9 +31,9 @@ def solar_system():
     vx_arr = np.zeros_like(r_dist)
     vy_arr = v_kep.copy()
     vz_arr = np.zeros_like(r_dist)
-    
+
     return Distribution.from_arrays(
-        x_arr, y_arr, z_arr, 
+        x_arr, y_arr, z_arr,
         vx_arr, vy_arr, vz_arr,
         masses, name='Solar')
 
@@ -54,7 +57,7 @@ def disk(
     mass = disk_mass / N
     dens = N / (radius * radius)
     r_list = []
-    for i in range(N):
+    for _ in range(N):
         r = rn.uniform(0.0, radius) + 4e3
         thet = rn.uniform(0.0000001, 2.0 * np.pi) #+ phi0
 
@@ -67,7 +70,7 @@ def disk(
         z = (-(a * x) - (b * y)) / c
 
         m0 = 0 #len(np.where(np.array(r_list) < r)[0]) * mass
-        v = 1 * np.sqrt(((G * (main_mass + m0)) / r))  # / np.sqrt(2)
+        v = 1 * np.sqrt((G * (main_mass + m0)) / r)  # / np.sqrt(2)
 
         vi = v * -np.sin(thet)
         vj = v * np.cos(thet)
@@ -90,7 +93,7 @@ def collapse_shpere(N, radius,
                     vx=0., vy=0., vz=0.):
     points = []
 
-    for i in range(N):
+    for _ in range(N):
         r = rn.uniform(0.0, radius)
         phi = rn.uniform(0.0000001, 2.0 * np.pi)
         costheta = rn.uniform(-1,1)
@@ -125,7 +128,7 @@ def scalar_to_sph(r, thet=None, phi=None):
 
 def plummer(N, radius,
             x0, y0, z0, total_mass,
-            vx0=0., vy0=0., vz0=0, 
+            vx0=0., vy0=0., vz0=0,
             max_radius=np.inf):
 
     points = []
@@ -136,7 +139,7 @@ def plummer(N, radius,
     M = total_mass
     mass = M/N
 
-    for i in range(N):
+    for _ in range(N):
         r = None
         while r is None or r > max_radius:
             uni_draw = np.random.uniform(0, 1)
