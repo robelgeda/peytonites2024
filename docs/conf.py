@@ -11,8 +11,8 @@ package = "peytonites"
 extensions = [
     "nbsphinx",
     "sphinx.ext.mathjax",
-    "nbsphinx",
     "sphinx_copybutton",
+    "myst_parser",
 ]
 nbsphinx_execute = 'auto'
 templates_path = ["_templates"]
@@ -27,7 +27,6 @@ html_theme_options = {
     "use_issues_button": True,
     "use_edit_page_button": True,
     "show_toc_level": 3,
-    'default_mode': 'dark',
 }
 html_logo = "./logo.svg"
 html_favicon = "./logo.svg"

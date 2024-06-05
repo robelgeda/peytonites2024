@@ -26,6 +26,8 @@ optional-dependencies.docs = [
   "nbsphinx",
   "sphinx_copybutton",
   "sphinx_book_theme",
+  "ipython",
+  "myst_parser",
 ]
 optional-dependencies.test = [
   "pytest-astropy",
