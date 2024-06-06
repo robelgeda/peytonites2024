@@ -22,7 +22,9 @@ from peytonites import (
     au_to_cm, cm_to_au
 )
 
-
+# test to see what device we are running on 
+from jax.lib import xla_bridge
+print(xla_bridge.get_backend().platform)
 
 sim_init_cond = SimState.read('init_conds/solar_system_100000step_init.dat')
 
