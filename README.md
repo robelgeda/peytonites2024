@@ -16,8 +16,12 @@ cd peytonites2024
 conda env create --file=environment.yml
 ```
 ```shell
+conda activate peytonites
+```
+```shell
 python install -e
 ```
+Now you can run things just normally or with the included job.sh that is in the hackathon directory
 
 
 ## Welcome 
