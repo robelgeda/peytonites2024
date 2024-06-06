@@ -21,7 +21,13 @@ conda activate peytonites
 ```shell
 python install -e
 ```
-Now you can run things just normally or with the included job.sh that is in the hackathon directory
+Now you can run things just normally or with the included job.sh that is in the hackathon directory. Can test by
+```shell
+cd hackathon
+```
+```shell
+sbatch job.sh
+```
 
 
 ## Welcome 
