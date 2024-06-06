@@ -12,3 +12,5 @@
 module load anaconda3/2023.3
 source /usr/licensed/anaconda3/2023.3/etc/profile.d/conda.sh
 conda activate peytonites
+
+python jax_nbody.py
