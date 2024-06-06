@@ -7,6 +7,8 @@ astropy>=5.2
 jupyter
 notebook
 ipywidgets
+jax
+jaxlib
 
 # Docs
 sphinx
