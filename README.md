@@ -5,6 +5,10 @@
 
 This is the epository for the Princeton Astrophysical team at  NVIDIA + Princeton Open Hackathon 
 
+# How to run this branch
+git clone this repo then 
+
+
 ## Welcome 
 
 Welcome to the official GitHub repository for Team Peytonites! We are a passionate and dynamic team interested in GPU computing. Our team is comprised of talented individuals who specialize in various sub-fields. 
