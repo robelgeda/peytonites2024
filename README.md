@@ -6,7 +6,12 @@
 This is the epository for the Princeton Astrophysical team at  NVIDIA + Princeton Open Hackathon 
 
 # How to run this branch
-git clone this repo then 
+```shell
+git clone REPO
+cd peytonites2024
+conda env create --file=environment.yml
+python install -e
+```
 
 
 ## Welcome 
