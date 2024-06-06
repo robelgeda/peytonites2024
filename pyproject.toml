@@ -54,6 +54,11 @@ extra-dependencies = [
   "cupy-cuda12x",
 ]
 
+[tool.hatch.envs.jax]
+extra-dependencies = [
+  "jax[cuda12]",
+]
+
 [tool.hatch.envs.jupyter]
 extra-dependencies = [
   "jupyterlab",
