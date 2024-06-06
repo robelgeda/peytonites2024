@@ -19,7 +19,7 @@ conda env create --file=environment.yml
 conda activate peytonites
 ```
 ```shell
-python install -e .
+python install -e.
 ```
 Now you can run things just normally or with the included job.sh that is in the hackathon directory. Can test by
 ```shell
