@@ -7,8 +7,9 @@ astropy>=5.2
 jupyter
 notebook
 ipywidgets
-jax
+jax[cuda12]
 jaxlib
+setuptools-scm
 
 # Docs
 sphinx
