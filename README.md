@@ -28,6 +28,7 @@ cd hackathon
 ```shell
 sbatch job.sh
 ```
+In "output.out" it will print the device jax is using this should say gpu.
 
 
 ## Welcome 
