@@ -7,9 +7,15 @@ This is the epository for the Princeton Astrophysical team at  NVIDIA + Princeto
 
 # How to run this branch
 ```shell
-git clone REPO
+git clone https://github.com/robelgeda/peytonites2024.git
+```
+```shell
 cd peytonites2024
+```
+```shell
 conda env create --file=environment.yml
+```
+```shell
 python install -e
 ```
 
