@@ -126,3 +126,22 @@ mkdir ~/.local
 tar -xzf gh_2.50.0_linux_amd64.tar.gz --strip-components=1 -C ~/.local
 ```
 
+## Conda
+
+If you want to use conda, you can:
+
+```bash
+module load anaconda3/2023.3 cudatoolkit/12.4
+source /usr/licensed/anaconda3/2023.3/etc/profile.d/conda.sh
+conda env create -n peytonites python==3.12 pip
+conda activate peytonites
+pip install -e .[cuda12,jax]
+```
+
+Use the following lines in your batch jobs instead:
+
+```bash
+module load anaconda3/2023.3 cudatoolkit/12.4
+source /usr/licensed/anaconda3/2023.3/etc/profile.d/conda.sh
+conda activate peytonites
+```

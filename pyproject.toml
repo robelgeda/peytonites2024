@@ -32,6 +32,12 @@ optional-dependencies.docs = [
 optional-dependencies.test = [
   "pytest-astropy",
 ]
+optional-dependencies.cuda12 = [
+  "cupy-cuda12x",
+]
+optional-dependencies.jax = [
+  "jax[cuda12]",
+]
 urls.Homepage = "https://github.com/robelgeda/peytonites2024.git"
 
 
@@ -43,21 +49,15 @@ version-file = "peytonites/version.py"
 
 [tool.hatch.envs.default]
 installer = "uv"
-
-[tool.hatch.envs.cuda11]
-extra-dependencies = [
-  "cupy-cuda11x",
-]
+extra-dependencies = [ "ipykernel" ]
 
 [tool.hatch.envs.cuda12]
-extra-dependencies = [
-  "cupy-cuda12x",
-]
+features = [ "cuda12" ]
+scripts.ipykernel = "python -m ipykernel install --user --name cuda12"
 
 [tool.hatch.envs.jax]
-extra-dependencies = [
-  "jax[cuda12]",
-]
+features = [ "jax" ]
+scripts.ipykernel = "python -m ipykernel install --user --name jax"
 
 [tool.hatch.envs.jupyter]
 extra-dependencies = [
