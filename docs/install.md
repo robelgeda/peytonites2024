@@ -79,6 +79,16 @@ For Jupyter lab (such as locally), use:
 hatch run jupyter:lab
 ```
 
+If you want to use Jupyter on the cluster, run this command:
+
+```bash
+hatch run cuda12:ipykernel
+```
+
+This will install a file in your user directory that allows Jupyter to find the
+kernel, which will be named "cupy12". Same thing ccan be done for the "jax"
+environment, with a matching name.
+
 ## Submitting jobs
 
 ```{TIP}
