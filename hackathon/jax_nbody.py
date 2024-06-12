@@ -38,6 +38,9 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["mathtext.fontset"] = "dejavuserif"
 plt.rcParams.update({"text.usetex": True})
 
+# turn on 64 bit operations
+jax.config.update("jax_enable_x64", True)
+
 # import peytonites package things
 import peytonites
 from peytonites import (
