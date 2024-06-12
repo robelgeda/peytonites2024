@@ -147,7 +147,7 @@ def jax_simulation(n_steps, sim_init_cond, out_dir, verbose=False):
     return 
 
 # setup the simulation parameters
-N = 20000
+N = 50000
 total_mass = N * (1*u.M_sun).to('g').value
 radius = (10*u.lyr).to('cm').value
 dynamical_time = peytonites.dynamical_time(total_mass, radius)
@@ -176,15 +176,15 @@ soft = peytonites.estimate_softening_length(N, radius, fraction=0.5)
 
 sim_init_cond = SimState(
     distribution=dist_combo, # `Distribution` object
-    nsteps=10000, # Number of steps in the sim
+    nsteps=20000, # Number of steps in the sim
     dt=dynamical_time / 100, # Time interval for each time-step
     soft=soft, # Softening parameter
-    out_interval=10 # Output sim every out_interval
+    out_interval=1000 # Output sim every out_interval
 )
 
 out_dir = './solar_system_simout_GPU'
 jitted_sim = jax.jit(jax_simulation, static_argnums=(0,1,2,3))
-steps = 5000
+steps = 20000
 
 # run the simulation
 print('           JIT compiled')
