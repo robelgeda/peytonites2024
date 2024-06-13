@@ -58,6 +58,9 @@ scripts.ipykernel = "python -m ipykernel install --user --name cuda12"
 [tool.hatch.envs.jax]
 features = [ "jax" ]
 scripts.ipykernel = "python -m ipykernel install --user --name jax"
+post-install-commands = [
+  "uv pip install -U --exclude-newer=2024-05-01 jax[cuda12]",
+]
 
 [tool.hatch.envs.jupyter]
 extra-dependencies = [
