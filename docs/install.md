@@ -121,6 +121,19 @@ sbatch submit.sbatch
 
 from the hackathon folder.
 
+## Interactive running
+
+You can start an interactive session:
+
+```bash
+salloc --nodes=1 --ntasks=1 --mem=32G --time=00:30:00 --gres=gpu:1 --reservation=openhack
+```
+
+You can use `hatch run cuda12:python` to drop into Python, or `hatch shell
+cuda12` to "activate" the environment. (Note that hatch is just making a normal
+virtual environment, and you can manually activate it like any other venv if
+you want. `hatch env find cuda12` will show the actual env location.)
+
 
 ## gh Tool
 
