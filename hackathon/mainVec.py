@@ -4,6 +4,7 @@ import sys
 from time import time
 
 import numpy as np
+#import cupy as np
 
 from astropy import units as u
 from astropy import constants as const
@@ -44,48 +45,34 @@ def simulation(sim_init_cond, out_dir, verbose=True):
 #Computation Start
     tstart = time()
     for step in range(nsteps):
+        dx = x_arr[:, np.newaxis] - x_arr
+        print('Szie of dx is ',dx.shape)
+        dy = y_arr[:, np.newaxis] - y_arr
+        dz = z_arr[:, np.newaxis] - z_arr
 
-        ax_arr = np.zeros_like(x_arr)
-        ay_arr = np.zeros_like(x_arr)
-        az_arr = np.zeros_like(x_arr)
+        # Avoid division by zero by adding softening length
+        r_squared = dx**2 + dy**2 + dz**2 + soft**2
+        np.fill_diagonal(r_squared, 1)  # Avoid self-interaction
 
-        for i in range(number_particles):
-            ax, ay, az = 0., 0., 0.
-            xi, yi, zi = x_arr[i], y_arr[i], z_arr[i]
+        r = np.sqrt(r_squared)
+        r_cubed = r_squared * r
 
-            for j in range(number_particles):
-                if i == j:
-                    continue
-
-                dx = xi - x_arr[j]
-                dy = yi - y_arr[j]
-                dz = zi - z_arr[j]
-
-                r_ij_squared = dx**2 + dy**2 + dz**2 + soft**2
-                r_ij = np.sqrt(r_ij_squared)
-                r_ij_cubed = r_ij_squared * r_ij
-
-                mj = mass_arr[j]
-                a = - (G * mj) / r_ij_cubed
-
-                ax += a * dx
-                ay += a * dy
-                az += a * dz
-
-            ax_arr[i] = ax
-            ay_arr[i] = ay
-            az_arr[i] = az
+        # Compute accelerations
+        a = -G * mass_arr / r_cubed
+        np.fill_diagonal(a, 0)
+        ax_arr = np.sum(a * dx, axis=1)
+        ay_arr = np.sum(a * dy, axis=1)
+        az_arr = np.sum(a * dz, axis=1)
 
 
-        for i in range(number_particles):
+        # Update velocities and positions
+        vx_arr += ax_arr * dt
+        vy_arr += ay_arr * dt
+        vz_arr += az_arr * dt
 
-            vx_arr[i] += ax_arr[i] * dt
-            vy_arr[i] += ay_arr[i] * dt
-            vz_arr[i] += az_arr[i] * dt
-
-            x_arr[i] += vx_arr[i] * dt
-            y_arr[i] += vy_arr[i] * dt
-            z_arr[i] += vz_arr[i] * dt
+        x_arr += vx_arr * dt
+        y_arr += vy_arr * dt
+        z_arr += vz_arr * dt
 
     tend = time()
 #Computation End
