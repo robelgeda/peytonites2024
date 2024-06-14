@@ -142,19 +142,33 @@ void calcForce(double* x_arr, double* y_arr, double* z_arr, double* ax_arr, \
         }
     }
     __syncthreads();
-    if(tId<64) tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+64)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+64)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+64)+(2*bDim)];
+    if(tId<64){
+        tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+64)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+64)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+64)+(2*bDim)];
+    }
     __syncthreads();
-    if(tId<32) tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+32)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+32)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+32)+(2*bDim)];
+    if(tId<32){
+        tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+32)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+32)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+32)+(2*bDim)];
+    }
     __syncthreads();
-    if(tId<16) tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+16)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+16)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+16)+(2*bDim)];
+    if(tId<16){
+        tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+16)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+16)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+16)+(2*bDim)];
+    }
     __syncthreads();
-    if(tId<8) tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+ 8)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+ 8)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+ 8)+(2*bDim)];
+    if(tId<8){
+        tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+ 8)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+ 8)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+ 8)+(2*bDim)];
+    }
     __syncthreads();
-    if(tId<4) tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+ 4)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+ 4)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+ 4)+(2*bDim)];
+    if(tId<4){
+        tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+ 4)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+ 4)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+ 4)+(2*bDim)];
+    }
     __syncthreads();
-    if(tId<2) tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+ 2)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+ 2)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+ 2)+(2*bDim)];
+    if(tId<2){
+        tmp[tId+(0*bDim)] = tmp[tId+(0*bDim)]+tmp[(tId+ 2)+(0*bDim)]; tmp[tId+(1*bDim)] = tmp[tId+(1*bDim)]+tmp[(tId+ 2)+(1*bDim)]; tmp[tId+(2*bDim)] = tmp[tId+(2*bDim)]+tmp[(tId+ 2)+(2*bDim)];
+    }
     __syncthreads();
-    if(tId==0) ax_arr[bId] = tmp[tId+(0*bDim)]+tmp[(tId+1)+(0*bDim)]; ay_arr[bId] = tmp[tId+(1*bDim)]+tmp[(tId+1)+(1*bDim)]; az_arr[bId] = tmp[tId+(2*bDim)]+tmp[(tId+1)+(2*bDim)];
+    if(tId==0){
+        ax_arr[bId] = tmp[tId+(0*bDim)]+tmp[(tId+1)+(0*bDim)]; ay_arr[bId] = tmp[tId+(1*bDim)]+tmp[(tId+1)+(1*bDim)]; az_arr[bId] = tmp[tId+(2*bDim)]+tmp[(tId+1)+(2*bDim)];
+    }
     __syncthreads();
 }
 ''','calcForce')
